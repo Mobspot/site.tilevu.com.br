@@ -7,6 +7,7 @@ Candidato de `https://site.tilevu.com.br/`. Login continua em `https://tilevu.co
 ```sh
 python -m http.server 8765 --bind 127.0.0.1
 python -m unittest discover -s tests -v
+python scripts/optimize_prints.py
 python scripts/prepare_prints.py
 ```
 
@@ -18,7 +19,7 @@ Ver `assets/prints/README.md`. Onze capturas reais do Laboratório foram recebid
 
 ## Imagens e marca
 
-Fotos ilustrativas geradas por IA e montagem do Geladão fornecidas pelo CEO em 15/11/2026. Caso autorizado por Sidney. Legendas distinguem ilustração de captura real. Símbolo e favicon fornecidos pelo Tilevu. Fontes DM Sans/DM Mono locais sob OFL (licenças em assets/fonts). Composição social própria em `assets/og-image.png` (1200×630), derivada do herói. `scripts/og-card.html` conserva a composição alternativa para captura no navegador.
+Fotos ilustrativas geradas por IA e montagem do Geladão fornecidas pelo CEO em 15/11/2026. Caso autorizado por Sidney. Aviso discreto no rodapé e alt descritivo, conforme revisão 1. Símbolo e favicon fornecidos pelo Tilevu. Fontes DM Sans/DM Mono locais sob OFL (licenças em assets/fonts). Composição social própria em `assets/og-image.png` (1200×630), sem selo, renderizada por `python scripts/render_social.py` (Pillow e PyMuPDF). `scripts/og-card.html` conserva a composição alternativa para captura no navegador.
 
 ## Gates de produção
 
@@ -27,4 +28,8 @@ GA4, Search Console, conversões e relatório semanal pendentes no inventário T
 
 ## Validação desta sessão
 
-13 testes locais e auditoria estática central aprovados. Encaixe estrito: zero capturas pendentes. Chrome não iniciou no ambiente (EPERM/acesso negado em crashpad); Computer Use também falhou na inicialização do sandbox. Portanto 1440/1024/768/390 px, teclado, reduced-motion no navegador e Lighthouse não foram aprovados. Não liberar produção até executar esses gates.
+Revisão 1: 14 testes locais e auditoria estática central aprovados. Doze capturas distintas, incluindo o extra do catálogo, zero pendentes. Chrome/Puppeteer não iniciou (EPERM/acesso negado em crashpad); navegador conectado também falhou na inicialização do sandbox. Portanto 1440/1024/768/390 px, teclado, reduced-motion no navegador e Lighthouse continuam sem aprovação nesta sessão. Não liberar produção até executar esses gates.
+
+Herói usa `picture` para trocar o PDV desktop pelo móvel até 640 px, sem baixar os dois por CSS. Cards PDV/fiscal/multi-loja e galeria de seis telas ficam abertos. Revendedor desabilitado no cabeçalho acima de 640 px e no rodapé. Fiscal preservado por decisão explícita do CEO de 15/11 às 17:46, em nome do Sidney; não constitui validação funcional.
+
+WebP com qualidade 90 e larguras 720/1440 (1170 no celular, sem ampliar original): 951.002 bytes para o conjunto maior versus 3.330.287 bytes dos PNGs utilizados, redução de 71,4%. Os PNGs continuam disponíveis somente por clique. Orçamento total de armazenamento passou de 6 para 8 MB para acomodar originais e derivados; limite de transferência inicial permanece 3 MB e requer Lighthouse. Auditar uma cópia da branch sem `.git`/`__pycache__`, como o artefato entregue ao Pages, nunca somar o banco de objetos Git ao peso público.

@@ -32,7 +32,19 @@ def render(content, root=ROOT, require_all=False):
         if width < 100 or height < 100:
             raise ValueError("Captura pequena demais: " + name)
         title = html.escape(slot["title"], quote=True)
-        body = f'<figure class="device {slot["device"]}" data-print="{name}"><div class="device-bar" aria-hidden="true"><i></i><i></i><i></i><span>Tilevu · {title}</span></div><a href="assets/prints/{name}" aria-label="Ampliar captura: {title}"><img class="product-print" src="assets/prints/{name}" alt="Captura real do Tilevu: {title}" width="{width}" height="{height}" loading="lazy" decoding="async"></a><figcaption>{title}</figcaption></figure>'
+        stem = Path(name).stem
+        large = min(1440, width)
+        sizes = '(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 520px'
+        srcset = f'assets/prints/{stem}-720.webp 720w, assets/prints/{stem}-{large}.webp {large}w'
+        image = f'<img class="product-print" src="assets/prints/{stem}-720.webp" srcset="{srcset}" sizes="{sizes}" alt="Captura real do Tilevu: {title}" width="{width}" height="{height}" loading="lazy" decoding="async">'
+        device = slot['device']
+        if device == 'hero':
+            device = 'hero-screen'
+            # One picture: mobile fetches the phone capture, desktop the PDV.
+            image = f'<picture><source media="(max-width: 640px)" srcset="{srcset}" sizes="140px"><img class="product-print" src="assets/prints/01-pdv-venda-720.webp" srcset="assets/prints/01-pdv-venda-720.webp 720w, assets/prints/01-pdv-venda-1440.webp 1440w" sizes="(max-width: 800px) 180px, 340px" alt="Captura real do Tilevu: PDV durante uma venda" width="2880" height="1800" fetchpriority="high" decoding="async"></picture>'
+        body = f'<figure class="device {device}" data-print="{name}"><div class="device-bar" aria-hidden="true"><i></i><i></i><i></i><span>Tilevu · {title}</span></div><a href="assets/prints/{name}" aria-label="Ampliar captura: {title}">{image}</a><figcaption>{title}</figcaption></figure>'
+        if slot['device'] == 'hero':
+            body = body.replace(f'href="assets/prints/{name}" aria-label="Ampliar captura: {title}"', 'href="#solucoes" aria-label="Conheça o PDV do Tilevu"').replace(f'<figcaption>{title}</figcaption>', '<figcaption>PDV durante a venda</figcaption>')
         content = pattern.sub(lambda m: m.group(1) + body + m.group(3), content)
     if missing and require_all:
         raise ValueError("Capturas reais pendentes: " + ", ".join(missing))

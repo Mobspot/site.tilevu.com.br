@@ -1,7 +1,7 @@
 [
   {
     "file": "01-pdv-venda.png",
-    "title": "PDV no meio de uma venda",
+    "title": "PDV durante a venda",
     "device": "tablet"
   },
   {
@@ -26,7 +26,7 @@
   },
   {
     "file": "06-entrada-xml.png",
-    "title": "Entrada de mercadoria por XML",
+    "title": "Entrada por XML",
     "device": "laptop"
   },
   {
@@ -47,11 +47,16 @@
   {
     "file": "10-pdv-celular.png",
     "title": "PDV no celular",
-    "device": "phone"
+    "device": "hero"
   },
   {
     "file": "11-meu-dia-celular.png",
     "title": "Meu dia no celular",
+    "device": "phone"
+  },
+  {
+    "file": "extra-loja-online-celular-cervejas.png",
+    "title": "Catálogo online de bebidas",
     "device": "phone"
   }
 ]

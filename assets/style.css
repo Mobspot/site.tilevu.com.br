@@ -7,3 +7,17 @@
 
 .device.phone .product-print{height:350px;object-fit:cover;object-position:top}.device a{display:block}.device.laptop{border-bottom-width:12px}.hero-device .device figcaption{background:#fff}
 @media(max-width:800px){.device.phone .product-print{height:290px}}
+
+/* Revisão 1: cena inteira, telas abertas e originais disponíveis por clique. */
+.nav{gap:20px}.nav nav,.nav-actions{gap:20px}.header-reseller{margin:0}.header-reseller button{padding:10px;font-size:11px}.header-reseller span{margin-left:5px}
+.hero-art{padding-bottom:235px}.hero-photo{height:auto;aspect-ratio:1600/893;object-fit:contain;border-radius:20px}
+.hero-sticker{top:auto;bottom:100px;left:0;padding:12px;gap:10px;max-width:43%}.hero-sticker strong{font-size:15px}.hero-sticker .sticker-icon{display:none}
+.hero-device{width:55%;right:0;bottom:0;transform:rotate(-3deg)}.hero-device .device{margin:0}.hero-device figcaption{font-size:9px}
+.feature-blue .chips{margin-bottom:0}.feature-blue .device{margin-top:auto}.feature-blue>p{margin-bottom:24px}.feature-blue .chips{margin-bottom:25px}
+.feature .device{border-width:5px}.feature .device figcaption{font-size:12px;padding:8px}
+.gallery-section{background:#f3f6fc}.print-gallery{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:4px;padding:5px 4px 24px;overscroll-behavior-x:contain;scrollbar-color:#7a8bb1 #e0e4ed}
+.gallery-item{flex:0 0 48%;min-width:0;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;border:1px solid #dfe5ef;background:#fff;border-radius:16px;padding:25px}
+.gallery-item .device{margin:0}.gallery-item figcaption{font-size:13px;padding:10px}.gallery-item .phone{width:175px;max-width:100%}.gallery-item .device.phone .product-print{height:auto}
+@media(max-width:1100px){.nav nav{gap:12px;font-size:12px}.nav-actions{gap:12px}.header-reseller button{max-width:130px}.header-reseller span{display:block;margin:5px 0 0}.hero-art{padding-bottom:195px}.hero-sticker{bottom:80px}.hero-sticker strong{font-size:13px}}
+@media(max-width:800px){.hero-art{padding-bottom:170px}.hero-sticker{bottom:60px;padding:10px;max-width:44%}.hero-sticker strong{font-size:12px}.hero-sticker span:not(.sticker-icon){font-size:8px}.gallery-item{flex-basis:65%;padding:20px}}
+@media(max-width:640px){.header-reseller{display:none}.hero{grid-template-columns:1fr}.hero-art{padding-bottom:340px}.hero-photo{height:auto;aspect-ratio:1600/893}.hero-sticker{top:auto;bottom:120px;left:0;max-width:55%;padding:15px}.hero-sticker strong{font-size:17px}.hero-sticker span:not(.sticker-icon){font-size:10px}.hero-device{width:140px;right:8px;bottom:0;transform:rotate(3deg)}.hero-screen{border-radius:24px}.hero-screen .device-bar span{display:none}.hero-screen .product-print{aspect-ratio:1170/2532;width:100%;height:auto}.hero-screen figcaption{font-size:9px}.gallery-item{flex-basis:90%;padding:14px}.gallery-item figcaption{font-size:12px}.gallery-item .phone{width:165px}.print-gallery{gap:15px}}

@@ -6,4 +6,6 @@ Coloque PNGs revisados nesta pasta e rode `python scripts/prepare_prints.py --re
 
 Dados visíveis são de demonstração/Laboratório; não inserir dados reais de cliente, credenciais, certificados ou segredos. A tela fiscal informa que a emissão é próxima etapa, portanto não prova emissão em produção. Os extras recebidos são preservados, mas não entram no roteiro principal.
 
-Após substituir capturas, reexecutar testes e auditoria de peso, layout e acessibilidade. O modo estrito falha sem alterar HTML caso falte um PNG. As molduras são CSS e os conteúdos são as capturas reais fornecidas.
+Após substituir capturas, executar `python scripts/optimize_prints.py` (Pillow), seguido de `python scripts/prepare_prints.py --require-all`, testes e auditoria de peso, layout e acessibilidade. O modo estrito falha sem alterar HTML caso falte um PNG. As molduras são CSS e os conteúdos são as capturas reais fornecidas.
+
+Revisão 1: o extra do catálogo de cervejas integra a galeria aberta, totalizando doze capturas distintas. Os PNGs originais são preservados para ampliação; a página carrega WebP responsivo 720/1440 (1170 para fontes móveis menores), qualidade 90. O herói usa picture com o PDV móvel até 640 px e prioridade alta; demais prints são lazy. A galeria exibe seis legendas de 3–5 palavras. A decisão editorial fiscal foi reafirmada pelo CEO; o print continua sem provar emissão em produção.

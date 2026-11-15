@@ -62,9 +62,24 @@ class SiteTests(unittest.TestCase):
         for tag,a in self.parser.tags:
             if tag!='img':continue
             self.assertTrue(a.get('alt'));self.assertTrue(a.get('width'));self.assertTrue(a.get('height'))
-            if '/images/' in a.get('src',''):
+            if '/images/' in a.get('src','') or '/prints/' in a.get('src',''):
                 self.assertIn('srcset',a)
+                self.assertIn('sizes',a)
+                self.assertTrue(a['src'].endswith('.webp'))
                 self.assertTrue(a.get('loading')=='lazy' or a.get('fetchpriority')=='high')
+    def test_visible_prints_and_mobile_hero(self):
+        for body in re.findall(r'<details[^>]*>(.*?)</details>',self.html,re.S):
+            self.assertNotIn('product-print',body)
+        gallery=self.html.split('id="por-dentro"',1)[1].split('<section class="section mobile-section">',1)[0]
+        captions=re.findall(r'<figcaption>(.*?)</figcaption>',gallery)
+        self.assertEqual(6,len(captions))
+        for caption in captions:self.assertTrue(3 <= len(caption.split()) <= 5,caption)
+        source=next(a for t,a in self.parser.tags if t=='source')
+        self.assertEqual('(max-width: 640px)',source['media'])
+        self.assertIn('10-pdv-celular-',source['srcset'])
+        self.assertNotIn('class="photo-label"',self.html)
+        self.assertNotIn('Imagens de segmentos ilustrativas',self.html)
+        self.assertEqual(2,sum(t=='button' and a.get('aria-disabled')=='true' for t,a in self.parser.tags))
     def test_metadata_and_social_dimensions(self):
         tags={a.get('property',a.get('name')):a.get('content') for t,a in self.parser.tags if t=='meta'}
         self.assertIn(f'<link rel="canonical" href="{CANONICAL}">',self.html)
@@ -104,7 +119,7 @@ class SiteTests(unittest.TestCase):
         self.assertNotIn('fonts.googleapis.com',self.html)
         self.assertNotIn('fonts.gstatic.com',fonts)
     def test_print_contract_and_review_gate(self):
-        self.assertEqual(11,len(self.slots))
+        self.assertEqual(12,len(self.slots))
         for slot in self.slots:
             self.assertIn(f'data-print="{slot["file"]}"',self.html)
         manifest=json.loads((ROOT/'.tesseract/quality.json').read_text(encoding='utf-8'))
