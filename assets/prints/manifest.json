@@ -1,62 +1,165 @@
 [
   {
-    "file": "01-pdv-venda.png",
-    "title": "PDV durante a venda",
-    "device": "tablet"
+    "file": "12-par-pdv-desktop.png",
+    "title": "PDV durante a venda no computador",
+    "device": "laptop",
+    "companion": {
+      "file": "12-par-pdv-celular.png",
+      "title": "PDV durante a venda no celular",
+      "device": "phone"
+    },
+    "id": "hero-pdv",
+    "eager": true
   },
   {
-    "file": "02-pdv-fechamento.png",
-    "title": "Pagamento da venda",
-    "device": "laptop"
+    "file": "12-par-pdv-desktop.png",
+    "title": "PDV durante a venda no computador",
+    "device": "laptop",
+    "companion": {
+      "file": "12-par-pdv-celular.png",
+      "title": "PDV durante a venda no celular",
+      "device": "phone"
+    }
   },
   {
-    "file": "03-meu-dia.png",
-    "title": "Painel Meu dia",
-    "device": "laptop"
+    "file": "15-par-estoque-desktop.png",
+    "title": "Estoque por depósito no computador",
+    "device": "laptop",
+    "companion": {
+      "file": "15-par-estoque-celular.png",
+      "title": "Estoque por depósito no celular",
+      "device": "phone"
+    }
   },
   {
-    "file": "04-estoque.png",
-    "title": "Estoque por depósito",
-    "device": "laptop"
-  },
-  {
-    "file": "05-produto.png",
-    "title": "Ficha do produto",
-    "device": "laptop"
-  },
-  {
-    "file": "06-entrada-xml.png",
-    "title": "Entrada por XML",
-    "device": "laptop"
-  },
-  {
-    "file": "07-fiscal.png",
-    "title": "Área fiscal",
-    "device": "laptop"
-  },
-  {
-    "file": "08-loja-online-celular.png",
-    "title": "Loja online no celular",
+    "file": "20-fluxo-loja-1-abrir.png",
+    "title": "Loja online no celular com fotos dos produtos",
     "device": "phone"
   },
   {
-    "file": "09-multi-loja.png",
-    "title": "Troca de loja",
-    "device": "laptop"
-  },
-  {
-    "file": "10-pdv-celular.png",
-    "title": "PDV no celular",
-    "device": "hero"
-  },
-  {
-    "file": "11-meu-dia-celular.png",
-    "title": "Meu dia no celular",
+    "file": "21-fluxo-loja-2-categoria.png",
+    "title": "Categoria de bebidas com fotos no celular",
     "device": "phone"
   },
   {
-    "file": "extra-loja-online-celular-cervejas.png",
-    "title": "Catálogo online de bebidas",
+    "file": "22-fluxo-loja-3-adicionar.png",
+    "title": "Produto com foto e opção de adicionar à sacola no celular",
     "device": "phone"
+  },
+  {
+    "file": "23-fluxo-loja-4-sacola.png",
+    "title": "Sacola da loja online no celular",
+    "device": "phone"
+  },
+  {
+    "file": "24-fluxo-loja-5-finalizar.png",
+    "title": "Finalização do pedido da loja no celular",
+    "device": "phone"
+  },
+  {
+    "file": "25-fluxo-relatorio-1-painel.png",
+    "title": "Painel de relatórios do Tilevu no celular",
+    "device": "phone"
+  },
+  {
+    "file": "26-fluxo-relatorio-2-produtos.png",
+    "title": "Relatório de produtos no celular",
+    "device": "phone"
+  },
+  {
+    "file": "27-fluxo-relatorio-3-quantidade.png",
+    "title": "Quantidade vendida por produto no celular",
+    "device": "phone"
+  },
+  {
+    "file": "28-fluxo-relatorio-4-filtro.png",
+    "title": "Filtro do relatório de produtos no celular",
+    "device": "phone"
+  },
+  {
+    "file": "12-par-pdv-desktop.png",
+    "title": "PDV durante a venda no computador",
+    "device": "laptop",
+    "companion": {
+      "file": "12-par-pdv-celular.png",
+      "title": "PDV durante a venda no celular",
+      "device": "phone"
+    },
+    "id": "gallery-12-par-pdv"
+  },
+  {
+    "file": "13-par-meu-dia-desktop.png",
+    "title": "Painel Meu dia no computador",
+    "device": "laptop",
+    "companion": {
+      "file": "13-par-meu-dia-celular.png",
+      "title": "Painel Meu dia no celular",
+      "device": "phone"
+    },
+    "id": "gallery-13-par-meu-dia"
+  },
+  {
+    "file": "14-par-relatorio-produtos-desktop.png",
+    "title": "Ranking de produtos no computador",
+    "device": "laptop",
+    "companion": {
+      "file": "14-par-relatorio-produtos-celular.png",
+      "title": "Ranking de produtos no celular",
+      "device": "phone"
+    },
+    "id": "gallery-14-par-relatorio-produtos"
+  },
+  {
+    "file": "15-par-estoque-desktop.png",
+    "title": "Estoque por depósito no computador",
+    "device": "laptop",
+    "companion": {
+      "file": "15-par-estoque-celular.png",
+      "title": "Estoque por depósito no celular",
+      "device": "phone"
+    },
+    "id": "gallery-15-par-estoque"
+  },
+  {
+    "file": "16-meu-dia-celular-meta-e-curva.png",
+    "title": "Meta e curva do dia no celular",
+    "device": "phone",
+    "id": "pocket-16-meu-dia-celular-meta-e-curva"
+  },
+  {
+    "file": "17-meu-dia-celular-rentabilidade-e-top5.png",
+    "title": "Rentabilidade e top 5 no celular",
+    "device": "phone",
+    "id": "pocket-17-meu-dia-celular-rentabilidade-e-top5"
+  },
+  {
+    "file": "18-relatorio-celular-formas-de-pagamento.png",
+    "title": "Formas de pagamento no celular",
+    "device": "phone",
+    "id": "pocket-18-relatorio-celular-formas-de-pagamento"
+  },
+  {
+    "file": "19-relatorio-celular-meu-mes.png",
+    "title": "Visão do meu mês no celular",
+    "device": "phone",
+    "id": "pocket-19-relatorio-celular-meu-mes"
+  },
+  {
+    "file": "14-par-relatorio-produtos-celular.png",
+    "title": "Ranking de produtos no celular",
+    "device": "phone",
+    "id": "pocket-14-par-relatorio-produtos-celular"
+  },
+  {
+    "file": "13-par-meu-dia-celular.png",
+    "title": "Painel Meu dia no celular",
+    "device": "phone",
+    "id": "gestora-meu-dia"
+  },
+  {
+    "file": "22-fluxo-loja-3-adicionar.png",
+    "title": "Produto com foto na loja online no celular",
+    "device": "phone",
+    "id": "delivery-produto"
   }
 ]

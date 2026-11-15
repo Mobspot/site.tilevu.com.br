@@ -41,7 +41,7 @@ class SiteTests(unittest.TestCase):
         self.assertIn('href="#conteudo"',self.html)
         self.assertNotIn('noindex',self.html)
         self.assertIn('Seu comércio.',self.html)
-        self.assertIn('Pagamento da venda',self.html)
+        self.assertIn('Formas de pagamento',self.html)
         self.assertNotRegex(self.html,r'[A-Za-z]\?[A-Za-z]')
         self.assertNotIn('�',self.html)
         self.assertIn(':focus-visible',self.css)
@@ -70,13 +70,19 @@ class SiteTests(unittest.TestCase):
     def test_visible_prints_and_mobile_hero(self):
         for body in re.findall(r'<details[^>]*>(.*?)</details>',self.html,re.S):
             self.assertNotIn('product-print',body)
-        gallery=self.html.split('id="por-dentro"',1)[1].split('<section class="section mobile-section">',1)[0]
-        captions=re.findall(r'<figcaption>(.*?)</figcaption>',gallery)
-        self.assertEqual(6,len(captions))
-        for caption in captions:self.assertTrue(3 <= len(caption.split()) <= 5,caption)
-        source=next(a for t,a in self.parser.tags if t=='source')
-        self.assertEqual('(max-width: 640px)',source['media'])
-        self.assertIn('10-pdv-celular-',source['srcset'])
+        hero=self.html.split('class="hero wrap"',1)[1].split('</section>',1)[0]
+        self.assertIn('12-par-pdv-desktop',hero)
+        self.assertIn('12-par-pdv-celular',hero)
+        self.assertNotIn('loading="lazy"',hero)
+        self.assertEqual(2,hero.count('loading="eager"'))
+        self.assertLess(self.html.index('id="na-palma-da-mao"'),self.html.index('id="solucoes"'))
+        for stem in ['12-par-pdv','13-par-meu-dia','14-par-relatorio-produtos','15-par-estoque']:
+            pair=next(s for s in self.slots if s.get('id')=='gallery-'+stem)
+            self.assertEqual(stem+'-celular.png',pair['companion']['file'])
+        for obsolete in ['08-loja-online-celular','extra-loja-online-celular-cervejas']:
+            self.assertNotIn(obsolete,self.html)
+        self.assertEqual(9,self.html.count('class="step-label"'))
+        self.assertEqual(5,self.html.count('class="report-label"'))
         self.assertNotIn('class="photo-label"',self.html)
         self.assertNotIn('Imagens de segmentos ilustrativas',self.html)
         self.assertEqual(2,sum(t=='button' and a.get('aria-disabled')=='true' for t,a in self.parser.tags))
@@ -92,7 +98,7 @@ class SiteTests(unittest.TestCase):
         self.assertEqual({'Organization','SoftwareApplication','FAQPage'},{g['@type'] for g in graph})
         faq=next(g for g in graph if g['@type']=='FAQPage')['mainEntity']
         visible=self.html.split('</script>',1)[1]
-        self.assertEqual(6,len(faq))
+        self.assertEqual(7,len(faq))
         for question in faq:
             self.assertIn(question['name'],visible)
             self.assertIn(question['acceptedAnswer']['text'],visible)
@@ -119,12 +125,15 @@ class SiteTests(unittest.TestCase):
         self.assertNotIn('fonts.googleapis.com',self.html)
         self.assertNotIn('fonts.gstatic.com',fonts)
     def test_print_contract_and_review_gate(self):
-        self.assertEqual(12,len(self.slots))
+        captures=set()
         for slot in self.slots:
-            self.assertIn(f'data-print="{slot["file"]}"',self.html)
+            for member in [slot]+([slot['companion']] if slot.get('companion') else []):
+                self.assertIn(f'data-print="{member["file"]}"',self.html)
+                captures.add(member['file'])
+        self.assertEqual(21,len(captures))
         manifest=json.loads((ROOT/'.tesseract/quality.json').read_text(encoding='utf-8'))
         self.assertEqual({390,768,1024,1440},{v['width'] for v in manifest['browser']['viewports']})
-        self.assertIn('main, landing',(ROOT/'.github/workflows/validate.yml').read_text())
+        self.assertIn('main, landing, mobile',(ROOT/'.github/workflows/validate.yml').read_text())
         self.assertIn('reconciliação',(ROOT/'README.md').read_text(encoding='utf-8'))
     def test_no_obvious_secrets(self):
         for p in ROOT.rglob('*'):
@@ -141,13 +150,15 @@ class PrintIngestionTests(unittest.TestCase):
     def test_missing_captures_keep_placeholder_and_strict_mode_blocks(self):
         content=(ROOT/'index.html').read_text(encoding='utf-8')
         # Simulate a fresh slot and missing image independently of delivered captures.
-        slot=self.module.json.loads((ROOT/'assets/prints/manifest.json').read_text(encoding='utf-8'))[0]
+        slot={'file':'missing.png','title':'Captura pendente','device':'phone'}
         content=f'<!-- print:{slot["file"]}:start --><div>placeholder</div><!-- print:{slot["file"]}:end -->'
         with patch.object(self.module.json,'loads',return_value=[slot]), patch.object(Path,'exists',return_value=False):
             result,missing=self.module.render(content)
             self.assertEqual(content,result);self.assertEqual([slot['file']],missing)
             with self.assertRaises(ValueError):self.module.render(content,require_all=True)
     def test_ingestion_dimensions_idempotency_and_invalid_input(self):
+        current=(ROOT/'index.html').read_text(encoding='utf-8')
+        self.assertEqual(current,self.module.render(current,require_all=True)[0])
         slot={'file':'01-pdv-venda.png','title':'Caixa','device':'tablet'}
         data=b'\x89PNG\r\n\x1a\n'+b'\x00\x00\x00\x0dIHDR'+struct.pack('>II',1200,800)
         content='<!-- print:01-pdv-venda.png:start --><div>placeholder</div><!-- print:01-pdv-venda.png:end -->'

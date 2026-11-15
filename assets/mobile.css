@@ -1,0 +1,81 @@
+/* Mobile round: the same real screen on desktop and phone. No runtime dependency. */
+.hero-art,.hero-copy,.paired-gallery,.flow-block{min-width:0}
+.device.phone img.product-print{height:auto;object-fit:contain}
+.hero-art{padding-bottom:0;display:flex;flex-direction:column;gap:18px}
+.hero-photo{height:auto;aspect-ratio:1600/893;object-fit:contain;border-radius:20px}
+.hero-sticker{display:none}
+.hero-device{position:static;width:100%;transform:none;filter:drop-shadow(0 12px 18px #14234a18)}
+.responsive-note{display:flex;flex-wrap:wrap;gap:5px 16px;font-size:12px;margin-top:22px;color:var(--muted)}
+.responsive-note span::before{content:'✓';color:var(--blue);margin-right:6px}
+.device-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.31fr);gap:14px;align-items:center;width:100%;min-width:0}
+.device-pair .device{margin:0;width:100%;min-width:0}
+.device-pair .laptop{border:6px solid #22283c;border-bottom-width:12px;border-radius:10px 10px 6px 6px;box-shadow:0 4px 0 #c3c9d6}
+.device-pair .phone{border:5px solid #22283c;border-radius:20px;max-width:none}
+.device-pair .device-bar{height:16px}
+.device-pair .phone .device-bar{height:12px;justify-content:center;background:#22283c;border:0}
+.device-pair .phone .device-bar i{display:none}
+.device-pair figcaption,.feature .device-pair figcaption{font-size:10px;line-height:1.35;padding:7px 3px;letter-spacing:0}
+.hero-device .device-pair figcaption{font-size:9px}
+.feature>.device-pair{margin-top:28px}
+.feature-blue>.device-pair{margin-top:auto}
+.paired-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.pair-card{padding:28px;background:white;border:1px solid var(--line);border-radius:16px;min-width:0}
+.pair-card h3{font-size:22px;margin-bottom:28px}
+.palm-section{background:#f5f7fc;padding-top:76px}
+.palm-section .section-heading{margin-bottom:24px}
+.flow-links{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.flow-links a{display:inline-flex;align-items:center;gap:22px;background:white;border:1px solid #d6ddec;border-radius:8px;padding:10px 16px;font-size:13px;font-weight:600;color:var(--blue);min-height:44px}
+.flow-heading{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:28px}
+.flow-heading h3{font-size:27px;max-width:550px}
+.flow-heading p{font-size:13px;max-width:340px}
+.flow-block+.flow-block{margin-top:64px;padding-top:52px;border-top:1px solid #d9e0ef}
+.flow-scroll{max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:6px;overscroll-behavior-x:contain;scrollbar-color:#7a8bb1 #e0e4ed;padding:6px 6px 20px}
+.phone-flow{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:26px;padding:0;margin:0}
+.phone-flow>li{min-width:0;scroll-snap-align:start;position:relative}
+.phone-flow .device{margin:0 auto;width:100%;max-width:210px;box-shadow:0 10px 22px #17214612}
+.phone-flow .device figcaption{font-size:11px;line-height:1.4;padding:8px}
+.phone-flow .phone .device-bar{height:16px;background:#22283c;justify-content:center;border:0}
+.phone-flow .phone .device-bar i{display:none}
+.step-label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;line-height:1.4;min-height:44px;color:var(--ink);margin-bottom:14px}
+.step-label span{font-family:'DM Mono',monospace;color:var(--blue);font-size:11px;background:#e4eafb;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;flex-shrink:0}
+.phone-flow>li:not(:last-child)::after{content:'→';position:absolute;right:-22px;top:14px;color:var(--blue);font-size:17px}
+.report-flow>li::after{display:none}
+.report-label{font-size:17px;line-height:1.3;letter-spacing:-.02em;min-height:44px;margin-bottom:18px}
+.pocket-section{background:#fff}
+@media(max-width:1100px){
+  .hero-art{padding-bottom:0}.hero-device{width:100%}
+  .phone-flow{gap:18px}.phone-flow>li:not(:last-child)::after{right:-17px;font-size:14px}
+  .step-label{font-size:11px}.step-label span{width:25px;height:25px;font-size:10px}
+  .flow-heading{align-items:start}.flow-heading h3{font-size:24px}
+  .pair-card{padding:22px}.device-pair{gap:10px}
+}
+@media(max-width:800px){
+  .hero-art{padding-bottom:0}.hero-device{width:100%}
+  .flow-heading{display:block}.flow-heading p{margin-top:12px;max-width:none}
+  .phone-flow{grid-auto-columns:190px;gap:26px}.phone-flow>li:not(:last-child)::after{right:-22px}
+  .step-label{font-size:12px}.paired-gallery{gap:16px}.pair-card{padding:16px}
+  .device-pair{grid-template-columns:minmax(0,1fr) minmax(0,.38fr);gap:8px}
+  .device-pair .device{border-width:4px}.device-pair figcaption,.feature .device-pair figcaption{font-size:9px}
+}
+@media(max-width:640px){
+  .hero{padding-top:34px;padding-bottom:36px;gap:26px}
+  .hero-art{display:grid;grid-template-columns:minmax(0,1fr) 110px;align-items:center;gap:12px;padding:0}
+  .hero-photo{height:auto;aspect-ratio:1600/893;border-radius:14px}
+  .hero-device{width:100%;position:static;transform:none}
+  .device-pair{display:flex;justify-content:center;gap:0}
+  .device-pair>.laptop{display:none}
+  .device-pair>.phone{width:min(100%,210px);flex:none;border-width:6px;border-radius:26px}
+  .hero-device .device-pair>.phone{width:110px;border-width:4px;border-radius:18px}
+  .device-pair figcaption,.feature .device-pair figcaption{font-size:11px}
+  .hero-device .device-pair figcaption{font-size:8px}
+  .paired-gallery{grid-template-columns:minmax(0,1fr)}
+  .pair-card{padding:24px}.pair-card h3{text-align:center;font-size:24px;margin-bottom:22px}
+  .palm-section{padding-block:52px}.palm-section h2{font-size:42px}
+  .flow-links{gap:8px;margin-bottom:36px}.flow-links a{font-size:12px;gap:12px;padding:10px 12px}
+  .flow-heading h3{font-size:26px}.flow-heading p{font-size:13px}
+  .phone-flow{grid-auto-columns:min(65vw,210px);gap:28px}
+  .flow-scroll{margin-inline:-6px;width:calc(100% + 12px);max-width:calc(100% + 12px)}
+  .flow-block+.flow-block{margin-top:36px;padding-top:36px}
+  .responsive-note{font-size:11px;margin-top:16px;gap:4px 12px}
+}
+@media(prefers-reduced-motion:reduce){.flow-scroll{scroll-behavior:auto}}

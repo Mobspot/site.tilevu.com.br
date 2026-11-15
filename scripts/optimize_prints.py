@@ -7,8 +7,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     slots = json.loads((ROOT / 'assets/prints/manifest.json').read_text(encoding='utf-8'))
+    captures = {item['file']: item for slot in slots for item in [slot] + ([slot['companion']] if slot.get('companion') else [])}
     original_bytes = optimized_bytes = 0
-    for slot in slots:
+    for slot in captures.values():
         source = ROOT / 'assets/prints' / slot['file']
         original_bytes += source.stat().st_size
         with Image.open(source) as image:
@@ -18,7 +19,7 @@ def main():
                 resized.save(target, 'WEBP', quality=90, method=6)
                 if width == min(1440, image.width):
                     optimized_bytes += target.stat().st_size
-    print(json.dumps({'original_bytes': original_bytes, 'large_webp_bytes': optimized_bytes, 'captures': len(slots)}))
+    print(json.dumps({'original_bytes': original_bytes, 'large_webp_bytes': optimized_bytes, 'captures': len(captures)}))
 
 if __name__ == '__main__':
     main()

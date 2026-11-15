@@ -35,7 +35,7 @@
       "max_file_bytes": 1100000,
       "max_image_bytes": 1000000,
       "max_video_bytes": 10000000,
-      "max_total_bytes": 8000000
+      "max_total_bytes": 16000000
     }
   },
   "browser": {

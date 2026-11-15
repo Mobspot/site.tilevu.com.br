@@ -2,7 +2,7 @@ name: validar-site
 on:
   pull_request:
   push:
-    branches: [main, landing]
+    branches: [main, landing, mobile]
 permissions:
   contents: read
 jobs:

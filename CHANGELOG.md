@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-15 — candidato mobile
+
+- Pares CSS notebook/celular com 12–15 no herói, cards e galeria; celular priorizado até 640 px.
+- Na palma da mão: fluxos completos de pedido e relatório, scroll-snap e teclado nativos.
+- Relatórios no bolso, vitrine com fotos, microcopy responsiva, FAQ/JSON-LD, llms e sitemap atualizados.
+- 21 novos PNGs preservados e WebP 720/1170 ou 720/1440; herói eager, demais lazy.
+- Fiscal/multi-loja preservados em texto, sem simular prints mobile ausentes.
+- Orçamento de armazenamento 16 MB para originais/variantes; transferência continua 3 MB.
+- 14 testes do site aprovados; revisão visual/Lighthouse bloqueados pelo runtime. Sem merge/publicação.
+
 ## 2026-11-15 — revisão 1 do candidato
 
 - Foto inteira no herói, cartão fora dos rostos e PDV móvel até 640 px.

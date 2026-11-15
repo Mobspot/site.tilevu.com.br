@@ -9,6 +9,10 @@
 - [Entrar no sistema](https://tilevu.com.br): acesso de clientes.
 - [Mobspot](https://mobspot.com.br/): responsável pelo produto.
 
+- [Na palma da mão](https://site.tilevu.com.br/#na-palma-da-mao): fluxos reais de pedido na loja online e consulta de relatórios no celular; sem instalação.
+- [Relatórios no bolso](https://site.tilevu.com.br/#relatorios-no-bolso): meta e curva do dia, rentabilidade e top 5, formas de pagamento, mês e ranking de produtos.
+- [Do balcão ao celular](https://site.tilevu.com.br/#por-dentro): PDV, Meu dia, relatórios e estoque responsivos no celular, tablet e computador.
+
 ## Para quem
 Adegas, depósitos e distribuidoras de bebidas, mercearias, minimercados e conveniências. Adega Geladão Premium, em Guarulhos/SP, é cliente Tilevu.
 
