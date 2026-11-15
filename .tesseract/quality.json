@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "site": {
+    "slug": "site-tilevu-com-br",
+    "canonical_url": "https://site.tilevu.com.br/",
+    "indexability": "index"
+  },
+  "artifact": {
+    "pages": [
+      {
+        "file": "index.html",
+        "route": "/",
+        "indexable": true,
+        "require_json_ld": true
+      },
+      {
+        "file": "404.html",
+        "route": "/404.html",
+        "indexable": false,
+        "require_json_ld": false
+      }
+    ],
+    "required_files": [
+      ".nojekyll",
+      "index.html",
+      "404.html",
+      "robots.txt",
+      "sitemap.xml",
+      "llms.txt",
+      "CNAME",
+      "site.webmanifest",
+      "assets/og-image.png"
+    ],
+    "budgets": {
+      "max_file_bytes": 1100000,
+      "max_image_bytes": 1000000,
+      "max_video_bytes": 10000000,
+      "max_total_bytes": 6000000
+    }
+  },
+  "browser": {
+    "viewports": [
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "mobile": true
+      },
+      {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024,
+        "mobile": false
+      },
+      {
+        "name": "laptop",
+        "width": 1024,
+        "height": 768,
+        "mobile": false
+      },
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "mobile": false
+      }
+    ],
+    "lighthouse": {
+      "thresholds": {
+        "performance": 0.75,
+        "accessibility": 0.9,
+        "best-practices": 0.9,
+        "seo": 0.9
+      },
+      "max_transfer_bytes": 3000000
+    }
+  },
+  "smoke": {
+    "require_https": true,
+    "routes": [
+      {
+        "path": "/",
+        "status": 200,
+        "final_path": "/",
+        "contains": [
+          "Seu comércio.",
+          "Tilevu"
+        ]
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "final_path": "/robots.txt",
+        "contains": [
+          "https://site.tilevu.com.br/sitemap.xml"
+        ]
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "final_path": "/sitemap.xml",
+        "contains": [
+          "https://site.tilevu.com.br/"
+        ]
+      },
+      {
+        "path": "/llms.txt",
+        "status": 200,
+        "final_path": "/llms.txt",
+        "contains": [
+          "Tilevu"
+        ]
+      },
+      {
+        "path": "/tesseract-smoke-nao-existe",
+        "status": 404,
+        "final_path": "/tesseract-smoke-nao-existe",
+        "contains": [
+          "Página não encontrada"
+        ]
+      }
+    ]
+  }
+}

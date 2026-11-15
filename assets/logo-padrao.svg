@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Marca padrão">
+  <title>Marca padrão</title>
+  <!-- Marca NEUTRA (spec 060): aparece em host sem empresa e em empresa sem
+       logotipo. Uma forma só, na cor primária do tema padrão, sem nome:
+       o produto é marca branca. -->
+  <rect x="10" y="10" width="80" height="80" rx="22" fill="#4f46e5"/>
+  <circle cx="50" cy="50" r="18" fill="none" stroke="#fff" stroke-width="7"/>
+  <circle cx="50" cy="50" r="5" fill="#fff"/>
+</svg>

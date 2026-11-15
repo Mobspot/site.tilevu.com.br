@@ -1,0 +1,16 @@
+{
+  "name": "Tilevu",
+  "short_name": "Tilevu",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/favicon-padrao.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
