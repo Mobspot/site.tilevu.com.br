@@ -8,7 +8,7 @@ import struct
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def capture(slot, root, eager=False):
+def capture(slot, root, eager=False, paired=False):
     name = slot['file']
     if Path(name).name != name or not name.endswith('.png'):
         raise ValueError('Nome de captura inválido')
@@ -23,10 +23,12 @@ def capture(slot, root, eager=False):
     stem = Path(name).stem
     large = min(1440, width)
     sizes = '(max-width: 640px) 65vw, 210px' if device == 'phone' else '(max-width: 640px) 1px, (max-width: 1024px) 30vw, 420px'
+    if device == 'laptop' and not paired:
+        sizes = '(max-width: 640px) 85vw, (max-width: 1024px) 40vw, 520px'
     priority = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
     image = f'<img class="product-print" src="assets/prints/{stem}-720.webp" srcset="assets/prints/{stem}-720.webp 720w, assets/prints/{stem}-{large}.webp {large}w" sizes="{sizes}" alt="Captura real do Tilevu: {title}" width="{width}" height="{height}" {priority} decoding="async">'
-    # Hidden desktop uses a tiny source below 640 px, including the eager hero.
-    if device == 'laptop':
+    # Only paired desktops hidden below 640 px use a tiny source, including the hero.
+    if device == 'laptop' and paired:
         image = f'<picture><source media="(max-width: 640px)" srcset="assets/blank.svg">{image}</picture>'
     bar = '<div class="device-bar" aria-hidden="true"><i></i><i></i><i></i><span>Tilevu</span></div>'
     return f'<figure class="device {device}" data-print="{name}">{bar}<a href="assets/prints/{name}" aria-label="Ampliar captura: {title}">{image}</a><figcaption>{title}</figcaption></figure>'
@@ -53,7 +55,7 @@ def render(content, root=ROOT, require_all=False):
             if 'class="product-print"' in found.group(2):
                 raise ValueError('Captura anteriormente integrada foi removida: ' + key)
             continue
-        body = ''.join(capture(item, root, slot.get('eager', False)) for item in members)
+        body = ''.join(capture(item, root, slot.get('eager', False), paired=bool(slot.get('companion'))) for item in members)
         if slot.get('companion'):
             body = f'<div class="device-pair">{body}</div>'
         content = pattern.sub(lambda m: m.group(1) + body + m.group(3), content)

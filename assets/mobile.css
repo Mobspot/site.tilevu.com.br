@@ -9,9 +9,9 @@
 .responsive-note span::before{content:'✓';color:var(--blue);margin-right:6px}
 .device-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.31fr);gap:14px;align-items:center;width:100%;min-width:0}
 .device-pair .device{margin:0;width:100%;min-width:0}
-.device-pair .laptop{border:6px solid #22283c;border-bottom-width:12px;border-radius:10px 10px 6px 6px;box-shadow:0 4px 0 #c3c9d6}
+.device.laptop{border:6px solid #22283c;border-bottom-width:12px;border-radius:10px 10px 6px 6px;box-shadow:0 4px 0 #c3c9d6}
 .device-pair .phone{border:5px solid #22283c;border-radius:20px;max-width:none}
-.device-pair .device-bar{height:16px}
+.device-pair .device-bar,.device.laptop .device-bar{height:16px}
 .device-pair .phone .device-bar{height:12px;justify-content:center;background:#22283c;border:0}
 .device-pair .phone .device-bar i{display:none}
 .device-pair figcaption,.feature .device-pair figcaption{font-size:10px;line-height:1.35;padding:7px 3px;letter-spacing:0}
@@ -59,15 +59,15 @@
 }
 @media(max-width:640px){
   .hero{padding-top:34px;padding-bottom:36px;gap:26px}
-  .hero-art{display:grid;grid-template-columns:minmax(0,1fr) 110px;align-items:center;gap:12px;padding:0}
-  .hero-photo{height:auto;aspect-ratio:1600/893;border-radius:14px}
-  .hero-device{width:100%;position:static;transform:none}
+  .hero-art{display:flex;flex-direction:column;gap:0;padding:0}
+  .hero-photo{width:100%;height:auto;aspect-ratio:1600/893;border-radius:14px}
+  .hero-device{width:min(52%,210px);position:relative;align-self:flex-end;margin-top:-18%;transform:none;z-index:1}
   .device-pair{display:flex;justify-content:center;gap:0}
   .device-pair>.laptop{display:none}
   .device-pair>.phone{width:min(100%,210px);flex:none;border-width:6px;border-radius:26px}
-  .hero-device .device-pair>.phone{width:110px;border-width:4px;border-radius:18px}
+  .hero-device .device-pair>.phone{width:100%;border-width:5px;border-radius:22px}
   .device-pair figcaption,.feature .device-pair figcaption{font-size:11px}
-  .hero-device .device-pair figcaption{font-size:8px}
+  .hero-device .device-pair figcaption{font-size:10px}
   .paired-gallery{grid-template-columns:minmax(0,1fr)}
   .pair-card{padding:24px}.pair-card h3{text-align:center;font-size:24px;margin-bottom:22px}
   .palm-section{padding-block:52px}.palm-section h2{font-size:42px}
@@ -79,3 +79,18 @@
   .responsive-note{font-size:11px;margin-top:16px;gap:4px 12px}
 }
 @media(prefers-reduced-motion:reduce){.flow-scroll{scroll-behavior:auto}}
+
+/* Standalone notebooks remain visible at every viewport. */
+.feature>.device.laptop{margin-top:28px}
+.more-screens{margin-top:36px;min-width:0}
+.more-screens h3{font-size:24px;margin-bottom:20px}
+.more-screens-scroll{max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:6px 4px 16px;scrollbar-color:#7a8bb1 #e0e4ed}
+.laptop-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;padding:0;margin:0}
+.laptop-gallery>li{min-width:0;scroll-snap-align:start}
+.laptop-gallery .device{margin:0}
+.laptop-gallery figcaption{font-size:12px;line-height:1.4;padding:10px 5px}
+@media(max-width:640px){
+  .laptop-gallery{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:88%;gap:18px}
+  .more-screens{margin-top:28px}
+}
+@media(prefers-reduced-motion:reduce){.more-screens-scroll{scroll-behavior:auto}}

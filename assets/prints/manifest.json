@@ -161,5 +161,30 @@
     "title": "Produto com foto na loja online no celular",
     "device": "phone",
     "id": "delivery-produto"
+  },
+  {
+    "file": "07-fiscal.png",
+    "title": "Notas fiscais da loja",
+    "device": "laptop"
+  },
+  {
+    "file": "09-multi-loja.png",
+    "title": "Gestão de várias lojas",
+    "device": "laptop"
+  },
+  {
+    "file": "02-pdv-fechamento.png",
+    "title": "Pagamento no ponto de venda",
+    "device": "laptop"
+  },
+  {
+    "file": "05-produto.png",
+    "title": "Cadastro completo do produto",
+    "device": "laptop"
+  },
+  {
+    "file": "06-entrada-xml.png",
+    "title": "Entrada de mercadoria por XML",
+    "device": "laptop"
   }
 ]

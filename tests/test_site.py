@@ -130,7 +130,7 @@ class SiteTests(unittest.TestCase):
             for member in [slot]+([slot['companion']] if slot.get('companion') else []):
                 self.assertIn(f'data-print="{member["file"]}"',self.html)
                 captures.add(member['file'])
-        self.assertEqual(21,len(captures))
+        self.assertEqual(26,len(captures))
         manifest=json.loads((ROOT/'.tesseract/quality.json').read_text(encoding='utf-8'))
         self.assertEqual({390,768,1024,1440},{v['width'] for v in manifest['browser']['viewports']})
         self.assertIn('main, landing, mobile',(ROOT/'.github/workflows/validate.yml').read_text())
