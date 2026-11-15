@@ -1,0 +1,62 @@
+[
+  {
+    "file": "01-pdv-venda.png",
+    "title": "PDV durante a venda",
+    "device": "tablet"
+  },
+  {
+    "file": "02-pdv-fechamento.png",
+    "title": "Pagamento da venda",
+    "device": "laptop"
+  },
+  {
+    "file": "03-meu-dia.png",
+    "title": "Painel Meu dia",
+    "device": "laptop"
+  },
+  {
+    "file": "04-estoque.png",
+    "title": "Estoque por depósito",
+    "device": "laptop"
+  },
+  {
+    "file": "05-produto.png",
+    "title": "Ficha do produto",
+    "device": "laptop"
+  },
+  {
+    "file": "06-entrada-xml.png",
+    "title": "Entrada por XML",
+    "device": "laptop"
+  },
+  {
+    "file": "07-fiscal.png",
+    "title": "Área fiscal",
+    "device": "laptop"
+  },
+  {
+    "file": "08-loja-online-celular.png",
+    "title": "Loja online no celular",
+    "device": "phone"
+  },
+  {
+    "file": "09-multi-loja.png",
+    "title": "Troca de loja",
+    "device": "laptop"
+  },
+  {
+    "file": "10-pdv-celular.png",
+    "title": "PDV no celular",
+    "device": "hero"
+  },
+  {
+    "file": "11-meu-dia-celular.png",
+    "title": "Meu dia no celular",
+    "device": "phone"
+  },
+  {
+    "file": "extra-loja-online-celular-cervejas.png",
+    "title": "Catálogo online de bebidas",
+    "device": "phone"
+  }
+]
